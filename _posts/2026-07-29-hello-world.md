@@ -1,8 +1,8 @@
 ---
-title: "Hello World"
+title: "Hello Multiverse!"
 date: 2026-07-29 15:00:00 +0530
-categories: [Blogging, Demo]
-tags: [hello]
+categories: [Demo]
+tags:
 ---
 
-Hello World! This is my first blog post.
+First blog post ever!
