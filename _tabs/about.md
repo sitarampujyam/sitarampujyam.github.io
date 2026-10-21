@@ -1,8 +1,1 @@
----
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 4
----
-
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+I’m Sitaram Pujyam, a BS (Research) student at the Indian Institute of Science (IISc), Bengaluru. This is my personal website, where I’ll share my work, interests, and other cool things!
