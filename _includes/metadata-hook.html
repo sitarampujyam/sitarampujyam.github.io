@@ -8,7 +8,7 @@
   (function () {
     try {
       var lightScheme = localStorage.getItem('site-light-scheme') || 'white';
-      var darkScheme = localStorage.getItem('site-dark-scheme') || 'dim';
+      var darkScheme = localStorage.getItem('site-dark-scheme') || 'lights-out';
       document.documentElement.setAttribute('data-light-scheme', lightScheme);
       document.documentElement.setAttribute('data-dark-scheme', darkScheme);
 
@@ -16,7 +16,7 @@
       var readerSize = localStorage.getItem('reader-size') || '100';
       var readerSpacing = localStorage.getItem('reader-spacing') || 'normal';
       var readerWidth = localStorage.getItem('reader-width') || 'normal';
-      var readerAlign = localStorage.getItem('reader-align') || 'left';
+      var readerAlign = localStorage.getItem('reader-align') || 'justify';
 
       document.documentElement.setAttribute('data-reader-font', readerFont);
       document.documentElement.setAttribute('data-reader-size', readerSize);

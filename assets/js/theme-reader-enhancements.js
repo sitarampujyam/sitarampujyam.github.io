@@ -48,7 +48,7 @@
   }
 
   function getDarkScheme() {
-    return localStorage.getItem('site-dark-scheme') || 'dim';
+    return localStorage.getItem('site-dark-scheme') || 'lights-out';
   }
 
   function applySubThemes() {
@@ -274,7 +274,7 @@
       setReaderSize(100);
       setReaderSpacing('normal');
       setReaderWidth('normal');
-      setReaderAlign('left');
+      setReaderAlign('justify');
     });
   }
 
@@ -284,7 +284,7 @@
     const currentSize = docEl.getAttribute('data-reader-size') || '100';
     const currentSpacing = docEl.getAttribute('data-reader-spacing') || 'normal';
     const currentWidth = docEl.getAttribute('data-reader-width') || 'normal';
-    const currentAlign = docEl.getAttribute('data-reader-align') || 'left';
+    const currentAlign = docEl.getAttribute('data-reader-align') || 'justify';
 
     fontButtons.forEach(function (btn) {
       btn.classList.toggle('active', btn.dataset.font === currentFont);
