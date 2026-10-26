@@ -44,7 +44,7 @@
   }
 
   function getLightScheme() {
-    return localStorage.getItem('site-light-scheme') || 'white';
+    return localStorage.getItem('site-light-scheme') || 'sepia';
   }
 
   function getDarkScheme() {

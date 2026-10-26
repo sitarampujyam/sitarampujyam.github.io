@@ -1,10 +1,4 @@
-<section class="post-discussion" aria-labelledby="discussion-title">
-  <div class="discussion-heading">
-    <span class="discussion-eyebrow">Your turn</span>
-    <h2 id="discussion-title">Join the conversation</h2>
-    <p>Leave a thought or question. No account needed—just choose a display name.</p>
-  </div>
-
+<section class="post-discussion" aria-label="Comments">
   <div
     id="echothread"
     data-shortname="{{ site.echothread.shortname | escape }}"
@@ -16,9 +10,7 @@
     data-accent-color="#7c9cff"
     data-font-family="inherit"
     data-radius="18px"
-  >
-    <p class="discussion-loading">Loading the discussion…</p>
-  </div>
+  ></div>
 </section>
 
 <script src="https://cdn.echothread.io/widget.js" async></script>
