@@ -143,3 +143,714 @@
     transition: none;
   }
 }
+
+/* ==========================================================================
+   Kindle Sepia Theme (Light mode sub-scheme)
+   ========================================================================== */
+html[data-bs-theme='light'][data-light-scheme='sepia'],
+html:not([data-bs-theme='dark'])[data-light-scheme='sepia'] {
+  /* Framework */
+  --main-bg: #fbf0d9;
+  --mask-bg: #e3d6be;
+  --main-border-color: #ebdcc2;
+
+  /* Typography & core components */
+  --text-color: #382e1e;
+  --heading-color: #261d12;
+  --text-muted-color: #7b6953;
+  --text-muted-highlight-color: #4a3b2b;
+  --label-color: #63533e;
+  --blockquote-border-color: #d8c5a4;
+  --blockquote-text-color: #6a5843;
+  --link-color: #935216;
+  --link-underline-color: #dfceb1;
+  --button-bg: #fdf6e7;
+  --btn-border-color: #e5d6ba;
+  --btn-backtotop-color: #5c4a35;
+  --btn-backtotop-border-color: #decfae;
+  --card-header-bg: #f4e8cc;
+  --checkbox-color: #c9bba1;
+  --checkbox-checked-color: #935216;
+  --img-bg: radial-gradient(circle, #fbf2de 0%, #ede0c6 100%);
+
+  /* Menus & overlays */
+  --menu-bg: #fbf3e1;
+  --menu-border-color: #e8d9bd;
+  --menu-shadow-color: rgba(60, 40, 15, 0.12);
+  --menu-active-color: #261d12;
+  --menu-highlight-bg: rgba(220, 200, 165, 0.45);
+
+  /* Sidebar */
+  --site-title-color: #614e38;
+  --site-subtitle-color: #7b6953;
+  --sidebar-bg: #f4e7ca;
+  --sidebar-border-color: #e6d5b7;
+  --sidebar-muted-color: #6d5b45;
+  --sidebar-active-color: #24190c;
+  --sidebar-hover-bg: rgba(228, 210, 178, 0.65);
+  --sidebar-btn-bg: #fdf7e9;
+  --sidebar-btn-color: #7b6953;
+  --avatar-border-color: #fbf0d9;
+
+  /* Topbar */
+  --topbar-bg: rgba(251, 240, 217, 0.85);
+  --topbar-text-color: #382e1e;
+  --search-border-color: #e5d6ba;
+  --search-icon-color: #998770;
+  --input-focus-border-color: #a87943;
+
+  /* Posts & Code */
+  --post-list-text-color: #5c4b37;
+  --btn-patinator-text-color: #5c4b37;
+
+  /* Liquid glass in Sepia */
+  --glass-surface: rgba(251, 241, 222, 0.82);
+  --glass-highlight: rgba(255, 255, 255, 0.7);
+  --glass-edge: rgba(212, 190, 153, 0.5);
+  --glass-shadow: rgba(85, 55, 20, 0.09);
+  --glass-card: rgba(247, 235, 212, 0.72);
+}
+
+/* Sepia code block enhancements */
+html[data-bs-theme='light'][data-light-scheme='sepia'] div[class^='language-'] {
+  border: 1px solid #e5d5b7;
+  box-shadow: 0 4px 14px rgba(70, 45, 15, 0.05);
+}
+
+/* ==========================================================================
+   Lights Out Theme (Dark mode sub-scheme - OLED True Black)
+   ========================================================================== */
+html[data-bs-theme='dark'][data-dark-scheme='lights-out'] {
+  color-scheme: dark;
+
+  /* Framework */
+  --main-bg: #000000;
+  --mask-bg: #111215;
+  --main-border-color: #17181c;
+
+  /* Typography & core components */
+  --text-color: #e6edf3;
+  --heading-color: #ffffff;
+  --text-muted-color: #8993a0;
+  --text-muted-highlight-color: #b2bcc9;
+  --label-color: #9ca6b3;
+  --blockquote-border-color: #252830;
+  --blockquote-text-color: #939ca8;
+  --link-color: #58a6ff;
+  --link-underline-color: #1a365d;
+  --button-bg: #0a0b0d;
+  --btn-border-color: #1f2229;
+  --btn-backtotop-color: #d0d7de;
+  --btn-backtotop-border-color: #1a1c22;
+  --card-header-bg: #08090b;
+  --checkbox-color: #484f58;
+  --checkbox-checked-color: #58a6ff;
+  --img-bg: radial-gradient(circle, #050607 0%, #0d0e11 100%);
+
+  /* Menus & overlays */
+  --menu-bg: #090a0d;
+  --menu-border-color: #1e2128;
+  --menu-shadow-color: rgba(0, 0, 0, 0.85);
+  --menu-active-color: #ffffff;
+  --menu-highlight-bg: rgba(255, 255, 255, 0.08);
+
+  /* Sidebar */
+  --site-title-color: #9ba1ab;
+  --site-subtitle-color: #747b86;
+  --sidebar-bg: #050608;
+  --sidebar-border-color: #15161a;
+  --sidebar-muted-color: #7a828e;
+  --sidebar-active-color: #ffffff;
+  --sidebar-hover-bg: #0f1014;
+  --sidebar-btn-bg: #0b0c0f;
+  --sidebar-btn-color: #8c939f;
+  --avatar-border-color: #17181d;
+
+  /* Topbar */
+  --topbar-bg: rgba(0, 0, 0, 0.88);
+  --topbar-text-color: #e6edf3;
+  --search-border-color: #1f2228;
+  --search-icon-color: #656d78;
+  --input-focus-border-color: #388bfd;
+
+  /* Posts & Code */
+  --post-list-text-color: #8993a0;
+  --btn-patinator-text-color: #8993a0;
+
+  /* Liquid glass in Lights Out */
+  --glass-surface: rgba(8, 9, 12, 0.88);
+  --glass-highlight: rgba(255, 255, 255, 0.15);
+  --glass-edge: rgba(255, 255, 255, 0.11);
+  --glass-shadow: rgba(0, 0, 0, 0.9);
+  --glass-card: rgba(12, 13, 16, 0.7);
+}
+
+html[data-bs-theme='dark'][data-dark-scheme='lights-out'] div[class^='language-'] {
+  background-color: #060709 !important;
+  border: 1px solid #1a1c22;
+}
+
+/* ==========================================================================
+   Topbar Custom Action Buttons (Liquid Glass)
+   ========================================================================== */
+#topbar-custom-actions {
+  margin-left: auto;
+  margin-right: 0.5rem;
+}
+
+.topbar-custom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 2.15rem;
+  padding: 0 0.75rem;
+  border-radius: 9999px;
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-edge);
+  color: var(--text-color);
+  box-shadow:
+    0 4px 12px var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(150%);
+  cursor: pointer;
+  outline: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  user-select: none;
+  transition:
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.topbar-custom-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--link-color);
+  box-shadow:
+    0 6px 16px var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+.topbar-custom-btn:active {
+  transform: translateY(0);
+}
+
+.btn-aa-symbol {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* Sub-theme Dynamic Button Indicators */
+.sub-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  line-height: 1;
+}
+
+.swatch-bubble {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.swatch-white {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.swatch-sepia {
+  background: #e8ce9b;
+  border: 1px solid #ba965c;
+  box-shadow: 0 0 0 1.5px rgba(186, 150, 92, 0.25);
+}
+
+.swatch-dim {
+  background: #333842;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.swatch-lights-out {
+  background: #000000;
+  border: 1px solid #38bdf8;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.45);
+}
+
+/* Visibility Matrix for Master vs Sub-theme options */
+/* 1. When Master Theme is Light: hide all dark sub-indicators */
+html[data-bs-theme='light'] #topbar-custom-actions [class*='dark-view'],
+html:not([data-bs-theme='dark']) #topbar-custom-actions [class*='dark-view'] {
+  display: none !important;
+}
+
+/* 2. When Master Theme is Dark: hide all light sub-indicators */
+html[data-bs-theme='dark'] #topbar-custom-actions [class*='light-view'] {
+  display: none !important;
+}
+
+/* 3. In Light Mode: Show only White OR Sepia based on active data-light-scheme */
+html[data-bs-theme='light']:not([data-light-scheme='sepia']) #topbar-custom-actions .light-view-sepia,
+html:not([data-bs-theme='dark']):not([data-light-scheme='sepia']) #topbar-custom-actions .light-view-sepia {
+  display: none !important;
+}
+
+html[data-bs-theme='light'][data-light-scheme='sepia'] #topbar-custom-actions .light-view-white,
+html:not([data-bs-theme='dark'])[data-light-scheme='sepia'] #topbar-custom-actions .light-view-white {
+  display: none !important;
+}
+
+/* 4. In Dark Mode: Show only Dim OR Lights Out based on active data-dark-scheme */
+html[data-bs-theme='dark']:not([data-dark-scheme='lights-out']) #topbar-custom-actions .dark-view-lights-out {
+  display: none !important;
+}
+
+html[data-bs-theme='dark'][data-dark-scheme='lights-out'] #topbar-custom-actions .dark-view-dim {
+  display: none !important;
+}
+
+/* Responsive adjustment for topbar controls when search is active */
+#search.d-flex ~ #topbar-custom-actions,
+#topbar:has(#search.d-flex) #topbar-custom-actions {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Reader Customizer Modal Overlay (Liquid Glass Aesthetic)
+   ========================================================================== */
+.reader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 240ms cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reader-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.reader-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 20, 30, 0.45);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+html[data-bs-theme='light'] .reader-backdrop {
+  background: rgba(30, 40, 55, 0.28);
+}
+
+.reader-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 1.5rem;
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-edge);
+  box-shadow:
+    0 24px 64px -12px var(--glass-shadow),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 var(--glass-highlight);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  backdrop-filter: blur(36px) saturate(180%);
+  padding: 1.25rem 1.5rem;
+  color: var(--text-color);
+  transform: scale(0.95) translateY(8px);
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reader-overlay.active .reader-card {
+  transform: scale(1) translateY(0);
+}
+
+.reader-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--main-border-color);
+}
+
+.reader-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--heading-color);
+}
+
+.reader-subtitle {
+  margin: 0.2rem 0 0 0;
+  font-size: 0.78rem;
+  color: var(--text-muted-color);
+}
+
+.reader-close-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  width: 1.85rem;
+  height: 1.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted-color);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.reader-close-btn:hover {
+  background: var(--glass-card);
+  color: var(--text-color);
+  transform: scale(1.08);
+}
+
+/* Sections */
+.reader-section {
+  margin-bottom: 0.95rem;
+}
+
+.reader-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.45rem;
+}
+
+.reader-section-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--label-color);
+}
+
+.reader-active-font-badge,
+.reader-badge {
+  font-size: 0.75rem;
+  padding: 0.12rem 0.55rem;
+  border-radius: 9999px;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-edge);
+  color: var(--link-color);
+  font-weight: 600;
+}
+
+/* Font Grid */
+.reader-font-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 0.45rem;
+}
+
+.reader-font-btn {
+  background: var(--glass-card);
+  border: 1px solid var(--glass-edge);
+  border-radius: 0.85rem;
+  padding: 0.45rem 0.35rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition:
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease;
+  color: var(--text-color);
+}
+
+.reader-font-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--link-color);
+  box-shadow: 0 4px 12px var(--glass-shadow);
+}
+
+.reader-font-btn.active {
+  border-color: var(--link-color);
+  background: rgba(var(--link-color), 0.12);
+  box-shadow:
+    0 4px 14px var(--glass-shadow),
+    inset 0 0 0 1px var(--link-color);
+}
+
+.reader-font-btn .sample-text {
+  font-size: 1.25rem;
+  margin-bottom: 0.15rem;
+  line-height: 1.15;
+}
+
+.font-sample-default {
+  font-family: inherit;
+}
+
+.font-sample-claude {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.font-sample-merriweather {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+.font-sample-inter {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.font-sample-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.reader-font-btn .font-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.reader-font-btn .font-desc {
+  font-size: 0.7rem;
+  color: var(--text-muted-color);
+  text-align: center;
+  margin-top: 0.15rem;
+}
+
+/* Size Slider & Controls */
+.reader-size-control {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 1rem;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-edge);
+}
+
+.reader-step-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.reader-step-btn:hover {
+  background: var(--glass-surface);
+  transform: scale(1.1);
+}
+
+.reader-slider-track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.reader-slider {
+  width: 100%;
+  accent-color: var(--link-color);
+  cursor: pointer;
+}
+
+/* Segmented Control Buttons (Line spacing, Width, Alignment) */
+.reader-segmented-group {
+  display: flex;
+  border-radius: 1rem;
+  padding: 0.25rem;
+  background: var(--glass-card);
+  border: 1px solid var(--glass-edge);
+  gap: 0.25rem;
+}
+
+.reader-seg-btn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted-color);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.reader-seg-btn:hover {
+  color: var(--text-color);
+}
+
+.reader-seg-btn.active {
+  background: var(--glass-surface);
+  color: var(--heading-color);
+  font-weight: 600;
+  border-color: var(--glass-edge);
+  box-shadow:
+    0 2px 6px var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+/* Footer Buttons */
+.reader-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--main-border-color);
+}
+
+.reader-reset-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.82rem;
+  color: var(--text-muted-color);
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.reader-reset-btn:hover {
+  color: var(--text-color);
+  background: var(--glass-card);
+}
+
+.reader-done-btn {
+  background: var(--link-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.45rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.reader-done-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.92;
+}
+
+/* ==========================================================================
+   Reader Customizer Live Typography Overrides on Content
+   ========================================================================== */
+
+/* 1. Font Family Overrides */
+html[data-reader-font='claude'] article,
+html[data-reader-font='claude'] .content,
+html[data-reader-font='claude'] #main-wrapper main article {
+  font-family: 'Newsreader', 'Copernicus', 'Iowan Old Style', Georgia, serif !important;
+}
+
+html[data-reader-font='claude'] article h1,
+html[data-reader-font='claude'] article h2,
+html[data-reader-font='claude'] article h3,
+html[data-reader-font='claude'] article h4,
+html[data-reader-font='claude'] article h5,
+html[data-reader-font='claude'] article h6 {
+  font-family: 'Newsreader', 'Copernicus', Georgia, serif !important;
+  letter-spacing: -0.015em;
+}
+
+html[data-reader-font='merriweather'] article,
+html[data-reader-font='merriweather'] .content,
+html[data-reader-font='merriweather'] #main-wrapper main article {
+  font-family: 'Merriweather', Georgia, serif !important;
+}
+
+html[data-reader-font='inter'] article,
+html[data-reader-font='inter'] .content,
+html[data-reader-font='inter'] #main-wrapper main article {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+html[data-reader-font='mono'] article,
+html[data-reader-font='mono'] .content,
+html[data-reader-font='mono'] #main-wrapper main article {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+}
+
+/* 2. Font Size Scaling */
+article,
+.content {
+  font-size: calc(1rem * var(--reader-font-scale, 1)) !important;
+}
+
+/* 3. Line Spacing */
+html[data-reader-spacing='compact'] article,
+html[data-reader-spacing='compact'] .content {
+  line-height: 1.55 !important;
+}
+
+html[data-reader-spacing='normal'] article,
+html[data-reader-spacing='normal'] .content {
+  line-height: 1.8 !important;
+}
+
+html[data-reader-spacing='relaxed'] article,
+html[data-reader-spacing='relaxed'] .content {
+  line-height: 2.15 !important;
+}
+
+/* 4. Column Width (on screens >= 992px) */
+@media (min-width: 992px) {
+  html[data-reader-width='narrow'] #main-wrapper main {
+    max-width: 680px !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  html[data-reader-width='wide'] #main-wrapper main {
+    max-width: 980px !important;
+  }
+}
+
+/* 5. Text Alignment */
+html[data-reader-align='justify'] article p,
+html[data-reader-align='justify'] .content p {
+  text-align: justify !important;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+html[data-reader-align='left'] article p,
+html[data-reader-align='left'] .content p {
+  text-align: left !important;
+}
+

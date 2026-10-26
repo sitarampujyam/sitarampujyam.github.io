@@ -1,0 +1,147 @@
+<!-- Liquid Glass Reader Customizer Overlay -->
+<div id="reader-overlay" class="reader-overlay d-none" aria-hidden="true">
+  <div class="reader-backdrop" id="reader-backdrop"></div>
+  <div class="reader-card glass-panel" role="dialog" aria-modal="true" aria-labelledby="reader-card-title">
+    <div class="reader-card-header">
+      <div class="reader-card-title-group">
+        <h3 id="reader-card-title" class="reader-title">
+          <i class="fas fa-sliders-h me-2"></i> Reading Experience
+        </h3>
+        <p class="reader-subtitle">Customize typography, column width & spacing</p>
+      </div>
+      <button type="button" class="reader-close-btn" id="reader-close-btn" aria-label="Close reader settings">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="reader-card-body">
+      <!-- Section 1: Font Family -->
+      <div class="reader-section">
+        <div class="reader-section-header">
+          <span class="reader-section-label"><i class="fas fa-font me-1"></i> Typeface</span>
+          <span class="reader-active-font-badge" id="reader-active-font-name">Default</span>
+        </div>
+        <div class="reader-font-grid">
+          <!-- Default -->
+          <button type="button" class="reader-font-btn active" data-font="default">
+            <span class="sample-text font-sample-default">Aa</span>
+            <span class="font-name">Default Sans</span>
+            <span class="font-desc">System clean</span>
+          </button>
+          <!-- Claude Serif / Newsreader -->
+          <button type="button" class="reader-font-btn" data-font="claude">
+            <span class="sample-text font-sample-claude">Aa</span>
+            <span class="font-name">Claude Serif</span>
+            <span class="font-desc">Anthropic style</span>
+          </button>
+          <!-- Editorial Serif / Merriweather -->
+          <button type="button" class="reader-font-btn" data-font="merriweather">
+            <span class="sample-text font-sample-merriweather">Aa</span>
+            <span class="font-name">Editorial Serif</span>
+            <span class="font-desc">Merriweather classic</span>
+          </button>
+          <!-- Modern Sans / Inter -->
+          <button type="button" class="reader-font-btn" data-font="inter">
+            <span class="sample-text font-sample-inter">Aa</span>
+            <span class="font-name">Modern Sans</span>
+            <span class="font-desc">Inter display</span>
+          </button>
+          <!-- Technical Code Mono -->
+          <button type="button" class="reader-font-btn" data-font="mono">
+            <span class="sample-text font-sample-mono">Aa</span>
+            <span class="font-name">Code Mono</span>
+            <span class="font-desc">JetBrains Mono</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 2: Font Size -->
+      <div class="reader-section">
+        <div class="reader-section-header">
+          <span class="reader-section-label"><i class="fas fa-text-height me-1"></i> Text Size</span>
+          <span class="reader-badge" id="reader-size-badge">100%</span>
+        </div>
+        <div class="reader-size-control">
+          <button type="button" class="reader-step-btn" id="reader-size-down" aria-label="Decrease text size">
+            <span>A-</span>
+          </button>
+          <div class="reader-slider-track">
+            <input
+              type="range"
+              class="reader-slider"
+              id="reader-size-slider"
+              min="80"
+              max="140"
+              step="5"
+              value="100"
+              aria-label="Text size percentage"
+            >
+          </div>
+          <button type="button" class="reader-step-btn" id="reader-size-up" aria-label="Increase text size">
+            <span>A+</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 3: Line Spacing -->
+      <div class="reader-section">
+        <div class="reader-section-header">
+          <span class="reader-section-label"><i class="fas fa-align-justify me-1"></i> Line Spacing</span>
+        </div>
+        <div class="reader-segmented-group" id="reader-spacing-group">
+          <button type="button" class="reader-seg-btn" data-spacing="compact">
+            <i class="fas fa-bars-staggered me-1"></i> Compact
+          </button>
+          <button type="button" class="reader-seg-btn active" data-spacing="normal">
+            <i class="fas fa-bars me-1"></i> Standard
+          </button>
+          <button type="button" class="reader-seg-btn" data-spacing="relaxed">
+            <i class="fas fa-stream me-1"></i> Relaxed
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 4: Reading Column Width -->
+      <div class="reader-section">
+        <div class="reader-section-header">
+          <span class="reader-section-label"><i class="fas fa-arrows-alt-h me-1"></i> Column Width</span>
+        </div>
+        <div class="reader-segmented-group" id="reader-width-group">
+          <button type="button" class="reader-seg-btn" data-width="narrow">
+            Focused (680px)
+          </button>
+          <button type="button" class="reader-seg-btn active" data-width="normal">
+            Standard
+          </button>
+          <button type="button" class="reader-seg-btn" data-width="wide">
+            Expanded (960px)
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 5: Text Alignment -->
+      <div class="reader-section">
+        <div class="reader-section-header">
+          <span class="reader-section-label"><i class="fas fa-paragraph me-1"></i> Alignment</span>
+        </div>
+        <div class="reader-segmented-group" id="reader-align-group">
+          <button type="button" class="reader-seg-btn active" data-align="left">
+            <i class="fas fa-align-left me-1"></i> Left
+          </button>
+          <button type="button" class="reader-seg-btn" data-align="justify">
+            <i class="fas fa-align-justify me-1"></i> Justified (Kindle)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="reader-card-footer">
+      <button type="button" class="reader-reset-btn" id="reader-reset-btn">
+        <i class="fas fa-undo-alt me-1"></i> Reset to Defaults
+      </button>
+      <button type="button" class="reader-done-btn" id="reader-done-btn">
+        Done
+      </button>
+    </div>
+  </div>
+</div>

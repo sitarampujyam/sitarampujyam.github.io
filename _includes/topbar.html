@@ -1,0 +1,127 @@
+<!-- The Top Bar -->
+
+<header id="topbar-wrapper" class="flex-shrink-0" aria-label="Top Bar">
+  <div
+    id="topbar"
+    class="d-flex align-items-center justify-content-between px-lg-3 h-100"
+  >
+    <nav id="breadcrumb" aria-label="Breadcrumb">
+      {% assign paths = page.url | split: '/' %}
+
+      {% if paths.size == 0 or page.layout == 'home' %}
+        <!-- index page -->
+        <span>{{ site.data.locales[include.lang].tabs.home | capitalize }}</span>
+
+      {% else %}
+        {% for item in paths %}
+          {% if forloop.first %}
+            <span>
+              <a href="{{ '/' | relative_url }}">
+                {{- site.data.locales[include.lang].tabs.home | capitalize -}}
+              </a>
+            </span>
+
+          {% elsif forloop.last %}
+            {% if page.collection == 'tabs' %}
+              <span>{{ site.data.locales[include.lang].tabs[item] | default: page.title }}</span>
+            {% else %}
+              <span>{{ page.title }}</span>
+            {% endif %}
+
+          {% elsif page.layout == 'category' or page.layout == 'tag' %}
+            <span>
+              <a href="{{ item | append: '/' | relative_url }}">
+                {{- site.data.locales[include.lang].tabs[item] | default: page.title -}}
+              </a>
+            </span>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </nav>
+    <!-- endof #breadcrumb -->
+
+    <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar">
+      <i class="fas fa-bars fa-fw"></i>
+    </button>
+
+    <div id="topbar-title">
+      {% if page.layout == 'home' %}
+        {{- site.data.locales[include.lang].title | default: site.title -}}
+      {% elsif page.collection == 'tabs' or page.layout == 'page' %}
+        {%- capture tab_key -%}{{ page.url | split: '/' }}{%- endcapture -%}
+        {{- site.data.locales[include.lang].tabs[tab_key] | default: page.title -}}
+      {% else %}
+        {{- site.data.locales[include.lang].layout[page.layout] | default: page.layout | capitalize -}}
+      {% endif %}
+    </div>
+
+    <!-- Topbar Custom Controls (Reader Customizer + Dynamic Sub-Theme Toggle) -->
+    <div id="topbar-custom-actions" class="d-flex align-items-center gap-2">
+      <!-- Reader Customization Toggle Button -->
+      <button
+        type="button"
+        id="reader-customizer-btn"
+        class="topbar-custom-btn glass-pill-btn"
+        aria-label="Reading typography preferences"
+        title="Customize reading typography, font size & spacing"
+      >
+        <span class="btn-aa-symbol">Aa</span>
+      </button>
+
+      <!-- Sub-Theme Dynamic Single-Click Button -->
+      <!-- In Light mode: Shows White / Sepia toggle only -->
+      <!-- In Dark mode: Shows Subtle Dim / Lights Out toggle only -->
+      <button
+        type="button"
+        id="sub-theme-toggle-btn"
+        class="topbar-custom-btn glass-pill-btn"
+        aria-label="Toggle theme flavor"
+      >
+        <!-- Light Mode Sub-variant View (Pure White / Kindle Sepia) -->
+        <span class="sub-indicator light-view-white" data-target="sepia" title="Current: White (Click for Kindle Sepia)">
+          <span class="swatch-bubble swatch-white"></span>
+          <span class="sub-label d-none d-md-inline">White</span>
+        </span>
+        <span class="sub-indicator light-view-sepia" data-target="white" title="Current: Sepia (Click for Pure White)">
+          <span class="swatch-bubble swatch-sepia"></span>
+          <span class="sub-label d-none d-md-inline">Sepia</span>
+        </span>
+
+        <!-- Dark Mode Sub-variant View (Subtle Dim / Lights Out Pitch Black) -->
+        <span class="sub-indicator dark-view-dim" data-target="lights-out" title="Current: Subtle Dim (Click for Lights Out)">
+          <span class="swatch-bubble swatch-dim"></span>
+          <span class="sub-label d-none d-md-inline">Dim</span>
+        </span>
+        <span class="sub-indicator dark-view-lights-out" data-target="dim" title="Current: Lights Out (Click for Subtle Dim)">
+          <span class="swatch-bubble swatch-lights-out"></span>
+          <span class="sub-label d-none d-md-inline">Pitch Black</span>
+        </span>
+      </button>
+    </div>
+
+    <button type="button" id="search-trigger" class="btn btn-link" aria-label="Search">
+      <i class="fas fa-search fa-fw"></i>
+    </button>
+
+    <search id="search" class="align-items-center ms-3 ms-lg-0">
+      <i class="fas fa-search fa-fw"></i>
+      <input
+        class="form-control"
+        id="search-input"
+        type="search"
+        aria-label="search"
+        autocomplete="off"
+        placeholder="{{ site.data.locales[include.lang].search.hint | capitalize }}..."
+      >
+    </search>
+    <button type="button" class="btn btn-link text-decoration-none" id="search-cancel">
+      {{- site.data.locales[include.lang].search.cancel -}}
+    </button>
+  </div>
+</header>
+
+<!-- Reader Customizer Modal Overlay -->
+{% include reader-customizer.html %}
+
+<!-- Theme & Reader Customizer Script -->
+<script src="{{ '/assets/js/theme-reader-enhancements.js' | relative_url }}" defer></script>
