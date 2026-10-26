@@ -3,7 +3,7 @@ title: "Schrödinger’s Cat"
 date: 2026-07-29 15:00:00 +0530
 categories: [Physics]
 tags: [quantum mechanics, physics]
-description: "The time-dependent Schrödinger equation, rendered in LaTeX."
+description: "The time-dependent Schrödinger equation."
 math: true
 ---
 
