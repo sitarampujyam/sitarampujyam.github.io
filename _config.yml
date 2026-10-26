@@ -139,6 +139,12 @@ comments:
     lang: # optional, default to the value of `site.lang`
     reactions_enabled: # optional, default to the value of `1`
 
+# Hosted comments and per-post likes (EchoThread)
+# Public EchoThread site credentials used by the post discussion widget.
+echothread:
+  shortname: "personal-website"
+  api_key: "43S4QiTWv20DpVChUvubk5nIajNHTP1DXPu-QSHOqvI"
+
 # Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
 assets:
   self_host:

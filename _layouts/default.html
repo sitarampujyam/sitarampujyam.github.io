@@ -31,6 +31,10 @@ layout: compress
             {% else %}
               {{ content }}
             {% endif %}
+
+            {% if page.layout == 'post' and site.echothread.api_key != blank %}
+              {% include echothread-comments.html %}
+            {% endif %}
           </main>
 
           <!-- panel -->

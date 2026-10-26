@@ -142,6 +142,52 @@ html[data-bs-theme='dark'] #sidebar {
   transform: translateY(-2px);
 }
 
+.post-discussion {
+  margin: 3rem 0 1.5rem;
+  padding: clamp(1.1rem, 3vw, 2rem);
+  border: 1px solid var(--glass-edge);
+  border-radius: 1.5rem;
+  background: var(--glass-card);
+  box-shadow:
+    0 1rem 2.5rem var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+}
+
+.discussion-heading {
+  margin: 0 auto 1.25rem;
+  max-width: 44rem;
+  text-align: center;
+}
+
+.discussion-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: var(--link-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.discussion-heading h2 {
+  margin: 0 0 0.45rem;
+  color: var(--heading-color);
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+}
+
+.discussion-heading p,
+.discussion-loading {
+  margin: 0;
+  color: var(--text-muted-color);
+  font-size: 0.92rem;
+}
+
+#echothread {
+  min-height: 10rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   #sidebar .nav-link,
   #sidebar #mode-toggle,
