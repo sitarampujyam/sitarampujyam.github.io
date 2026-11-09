@@ -17,7 +17,7 @@ permalink: /books/
     <div class="book-info">
       <h2 class="book-title" data-toc-skip>Gödel, Escher, Bach: An Eternal Golden Braid</h2>
       <p class="book-author">Douglas R. Hofstadter</p>
-      <p class="book-note">My all-time favourite.</p>
+      <p class="book-note">Probably my all-time favourite.</p>
     </div>
   </article>
 
