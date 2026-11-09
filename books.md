@@ -92,4 +92,35 @@ permalink: /books/
     </div>
   </article>
 
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'hhgg.jpg' | relative_url }}" alt="Cover of The Hitchhiker's Guide to the Galaxy" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>The Hitchhiker’s Guide to the Galaxy</h2>
+      <p class="book-author">Douglas Adams</p>
+    </div>
+  </article>
+
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'tesla.jpg' | relative_url }}" alt="Cover of My Inventions" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>My Inventions: The Autobiography of Nikola Tesla</h2>
+      <p class="book-author">Nikola Tesla</p>
+    </div>
+  </article>
+
+  <article class="book-card book-series">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>Walter Isaacson’s Biographies</h2>
+      <p class="book-author">Walter Isaacson</p>
+      <p class="book-note"><em>Leonardo da Vinci</em> is such a good one. Isaacson is the most legendary biographer of our times, and I enjoyed all of his works thoroughly.</p>
+    </div>
+    <div class="book-strip">
+      <img src="{{ b | append: 'leo.jpg' | relative_url }}" alt="Leonardo da Vinci" title="Leonardo da Vinci" loading="lazy">
+      <img src="{{ b | append: 'einstein.jpg' | relative_url }}" alt="Einstein: His Life and Universe" title="Einstein: His Life and Universe" loading="lazy">
+      <img src="{{ b | append: 'jobs.jpg' | relative_url }}" alt="Steve Jobs" title="Steve Jobs" loading="lazy">
+      <img src="{{ b | append: 'musk.jpg' | relative_url }}" alt="Elon Musk" title="Elon Musk" loading="lazy">
+      <img src="{{ b | append: 'innovators.jpg' | relative_url }}" alt="The Innovators" title="The Innovators" loading="lazy">
+    </div>
+  </article>
+
 </div>
