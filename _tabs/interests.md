@@ -9,16 +9,16 @@ order: 5
 
 <div class="books-shelf interests-shelf">
 
-  <a class="book-card interest-card" href="{{ '/books/' | relative_url }}">
-    <img class="book-cover" src="{{ b | append: 'geb.jpg' | relative_url }}" alt="Cover of Gödel, Escher, Bach" loading="lazy">
+  <article class="book-card interest-card">
+    <div class="book-cover" role="img" aria-label="Cover of Gödel, Escher, Bach" style="background-image: url('{{ b | append: 'geb.jpg' | relative_url }}')"></div>
     <div class="book-info">
-      <h2 class="book-title" data-toc-skip>Books</h2>
+      <h2 class="book-title" data-toc-skip><a class="card-link" href="{{ '/books/' | relative_url }}">Books</a></h2>
       <p class="book-note">Books are, in my opinion, the most widely misunderstood and underrated medium. Perhaps the blame lies with schools. They are incredible and not at all boring if you know what you are reading and why!</p>
     </div>
-  </a>
+  </article>
 
   <article class="book-card interest-card">
-    <img class="book-cover" src="{{ b | append: 'interstellar.jpg' | relative_url }}" alt="Interstellar poster" loading="lazy">
+    <div class="book-cover" role="img" aria-label="Interstellar poster" style="background-image: url('{{ b | append: 'interstellar.jpg' | relative_url }}')"></div>
     <div class="book-info">
       <h2 class="book-title" data-toc-skip>Movies</h2>
       <p class="book-note">Movies are a modern form of storytelling. They differ from books in that they cannot truly replicate the depth and feel of a book, but they are stronger in their own way. A good movie is a piece of art and a compelling story together in one.</p>
@@ -26,7 +26,7 @@ order: 5
   </article>
 
   <article class="book-card interest-card">
-    <img class="book-cover interest-logo" src="{{ b | append: 'veritasium.png' | relative_url }}" alt="Veritasium channel logo" loading="lazy">
+    <div class="book-cover interest-logo" role="img" aria-label="Veritasium channel logo" style="background-image: url('{{ b | append: 'veritasium.png' | relative_url }}')"></div>
     <div class="book-info">
       <h2 class="book-title" data-toc-skip>Others</h2>
       <p class="book-note">YouTube, articles, blogs, etc.</p>
