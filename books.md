@@ -3,6 +3,7 @@ layout: page
 title: Books
 icon: fas fa-book-open
 order: 5
+permalink: /books/
 ---
 
 {% assign b = '/assets/img/books/' %}
