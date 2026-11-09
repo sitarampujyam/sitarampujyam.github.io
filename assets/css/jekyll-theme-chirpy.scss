@@ -893,3 +893,134 @@ html[data-reader-align='left'] .content p {
   text-align: left !important;
 }
 
+
+/* ==========================================================================
+   Books shelf
+   ========================================================================== */
+.books-intro {
+  color: var(--text-muted-color);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.books-shelf {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.book-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: 1.25rem;
+  background: var(--glass-card);
+  box-shadow:
+    0 0.8rem 1.8rem var(--glass-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+  -webkit-backdrop-filter: blur(14px) saturate(145%);
+  backdrop-filter: blur(14px) saturate(145%);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 1.2rem 2.2rem var(--glass-shadow),
+      inset 0 1px 0 var(--glass-highlight);
+  }
+
+  &.book-series {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.1rem;
+  }
+}
+
+.book-cover {
+  flex: 0 0 auto;
+  width: 7.5rem;
+  height: auto;
+  border-radius: 0.3rem 0.5rem 0.5rem 0.3rem;
+  box-shadow:
+    0 0.6rem 1.2rem rgba(70, 48, 20, 0.3),
+    inset 3px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.book-info {
+  min-width: 0;
+}
+
+.book-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  color: var(--heading-color);
+
+  &::before {
+    display: none;
+  }
+}
+
+.book-count {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text-muted-color);
+}
+
+.book-author {
+  margin: 0 0 0.6rem;
+  color: var(--text-muted-color);
+  font-size: 0.9rem;
+}
+
+.book-note {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.book-strip {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.4rem 0.25rem 0.8rem;
+
+  img {
+    flex: 0 0 auto;
+    width: 5.5rem;
+    height: auto;
+    border-radius: 0.2rem 0.35rem 0.35rem 0.2rem;
+    box-shadow:
+      0 0.5rem 1rem rgba(70, 48, 20, 0.3),
+      inset 2px 0 3px rgba(0, 0, 0, 0.15);
+    transition: transform 180ms ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .book-card:not(.book-series) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Footer caption */
+footer.site-caption {
+  height: auto;
+  margin: 2.5rem 0 1.5rem;
+  padding: 0;
+  border-top: 0;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  color: var(--text-muted-color);
+}

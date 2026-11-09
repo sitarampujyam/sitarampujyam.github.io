@@ -5,4 +5,89 @@ icon: fas fa-book-open
 order: 5
 ---
 
-Book reviews and recommendations will live here. Check back as I add books I’ve read and the ones I think are worth recommending.
+{% assign b = '/assets/img/books/' %}
+
+<p class="books-intro">My favourite books.</p>
+
+<div class="books-shelf">
+
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'geb.jpg' | relative_url }}" alt="Cover of Gödel, Escher, Bach" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>Gödel, Escher, Bach: An Eternal Golden Braid</h2>
+      <p class="book-author">Douglas R. Hofstadter</p>
+      <p class="book-note">My all-time favourite.</p>
+    </div>
+  </article>
+
+  <article class="book-card book-series">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>Harry Potter <span class="book-count">· all 7 books</span></h2>
+      <p class="book-author">J. K. Rowling</p>
+      <p class="book-note">They give me a warmth and nostalgia that no other book does.</p>
+    </div>
+    <div class="book-strip">
+      <img src="{{ b | append: 'hp1.jpg' | relative_url }}" alt="Harry Potter and the Philosopher's Stone" title="Harry Potter and the Philosopher's Stone" loading="lazy">
+      <img src="{{ b | append: 'hp2.jpg' | relative_url }}" alt="Harry Potter and the Chamber of Secrets" title="Harry Potter and the Chamber of Secrets" loading="lazy">
+      <img src="{{ b | append: 'hp3.jpg' | relative_url }}" alt="Harry Potter and the Prisoner of Azkaban" title="Harry Potter and the Prisoner of Azkaban" loading="lazy">
+      <img src="{{ b | append: 'hp4.jpg' | relative_url }}" alt="Harry Potter and the Goblet of Fire" title="Harry Potter and the Goblet of Fire" loading="lazy">
+      <img src="{{ b | append: 'hp5.jpg' | relative_url }}" alt="Harry Potter and the Order of the Phoenix" title="Harry Potter and the Order of the Phoenix" loading="lazy">
+      <img src="{{ b | append: 'hp6.jpg' | relative_url }}" alt="Harry Potter and the Half-Blood Prince" title="Harry Potter and the Half-Blood Prince" loading="lazy">
+      <img src="{{ b | append: 'hp7.jpg' | relative_url }}" alt="Harry Potter and the Deathly Hallows" title="Harry Potter and the Deathly Hallows" loading="lazy">
+    </div>
+  </article>
+
+  <article class="book-card book-series">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>The Lord of the Rings Trilogy &amp; The Hobbit</h2>
+      <p class="book-author">J. R. R. Tolkien</p>
+      <p class="book-note">A classic with incredible world building. My favourite piece of fiction.</p>
+    </div>
+    <div class="book-strip">
+      <img src="{{ b | append: 'hobbit.jpg' | relative_url }}" alt="The Hobbit" title="The Hobbit" loading="lazy">
+      <img src="{{ b | append: 'fotr.jpg' | relative_url }}" alt="The Fellowship of the Ring" title="The Fellowship of the Ring" loading="lazy">
+      <img src="{{ b | append: 'ttt.jpg' | relative_url }}" alt="The Two Towers" title="The Two Towers" loading="lazy">
+      <img src="{{ b | append: 'rotk.jpg' | relative_url }}" alt="The Return of the King" title="The Return of the King" loading="lazy">
+    </div>
+  </article>
+
+  <article class="book-card book-series">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>The Foundation Series</h2>
+      <p class="book-author">Isaac Asimov</p>
+      <p class="book-note">Psychohistory is such a cool concept. Amazing hardcore sci-fi.</p>
+    </div>
+    <div class="book-strip">
+      <img src="{{ b | append: 'f1.jpg' | relative_url }}" alt="Foundation" title="Foundation" loading="lazy">
+      <img src="{{ b | append: 'f2.jpg' | relative_url }}" alt="Foundation and Empire" title="Foundation and Empire" loading="lazy">
+      <img src="{{ b | append: 'f3.jpg' | relative_url }}" alt="Second Foundation" title="Second Foundation" loading="lazy">
+    </div>
+  </article>
+
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'sapiens.jpg' | relative_url }}" alt="Cover of Sapiens" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>Sapiens: A Brief History of Humankind</h2>
+      <p class="book-author">Yuval Noah Harari</p>
+    </div>
+  </article>
+
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'feynman.jpg' | relative_url }}" alt="Cover of Surely You're Joking, Mr. Feynman!" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>“Surely You’re Joking, Mr. Feynman!”: Adventures of a Curious Character</h2>
+      <p class="book-author">Richard P. Feynman, as told to Ralph Leighton</p>
+      <p class="book-note">Super fun and super interesting. I read it all in one sitting!</p>
+    </div>
+  </article>
+
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'boi.jpg' | relative_url }}" alt="Cover of The Beginning of Infinity" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>The Beginning of Infinity: Explanations That Transform the World</h2>
+      <p class="book-author">David Deutsch</p>
+      <p class="book-note">A contender for my all-time favourite, alongside GEB. Even the first 50 pages are the most optimistic view of science I’ve ever read.</p>
+    </div>
+  </article>
+
+</div>
