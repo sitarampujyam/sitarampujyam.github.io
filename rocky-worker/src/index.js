@@ -12,6 +12,7 @@ import { SYSTEM_PROMPT } from './prompt.js';
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const DEFAULT_MODEL = 'openai/gpt-oss-120b';
+const BACKUP_MODEL = 'openai/gpt-oss-20b';
 const MAX_TURNS = 12;
 const MAX_CHARS = 400;
 const GESTURES = ['bump', 'thumbs', 'amaze', 'wave'];
@@ -106,32 +107,42 @@ export default {
     const messages = cleanMessages(body && body.messages);
     if (!messages) return json({ error: 'bad messages' }, 400, origin);
 
-    let groq;
-    try {
-      groq = await fetch(GROQ_URL, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${env.GROQ_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: env.GROQ_MODEL || DEFAULT_MODEL,
-          messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
-          temperature: 0.8,
-          max_completion_tokens: 600,
-          reasoning_effort: 'medium',
-          include_reasoning: false
-        })
-      });
-    } catch {
-      return json({ error: 'upstream unreachable' }, 502, origin);
+    // Groq is usually ~1 s but occasionally stalls; try the main model with a
+    // time limit, then the faster backup model once.
+    const attempts = [
+      { model: env.GROQ_MODEL || DEFAULT_MODEL, effort: 'medium', ms: 7000 },
+      { model: BACKUP_MODEL, effort: 'low', ms: 6000 }
+    ];
+    let lastError = 'no attempt';
+    for (const a of attempts) {
+      try {
+        const parsed = await askGroq(env.GROQ_API_KEY, messages, a);
+        if (parsed.reply) return json(parsed, 200, origin);
+        lastError = 'empty reply';
+      } catch (e) {
+        lastError = String(e && e.message || e);
+      }
     }
-    if (!groq.ok) return json({ error: 'upstream ' + groq.status }, 502, origin);
-
-    const data = await groq.json();
-    const parsed = parseReply(data && data.choices && data.choices[0] && data.choices[0].message &&
-                              data.choices[0].message.content);
-    if (!parsed.reply) return json({ error: 'empty reply' }, 502, origin);
-    return json(parsed, 200, origin);
+    return json({ error: lastError }, 502, origin);
   }
 };
+
+async function askGroq(key, messages, { model, effort, ms }) {
+  const res = await fetch(GROQ_URL, {
+    method: 'POST',
+    signal: AbortSignal.timeout(ms),
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model,
+      messages: [{ role: 'system', content: SYSTEM_PROMPT }, ...messages],
+      temperature: 0.8,
+      max_completion_tokens: 600,
+      reasoning_effort: effort,
+      include_reasoning: false
+    })
+  });
+  if (!res.ok) throw new Error('upstream ' + res.status);
+  const data = await res.json();
+  const msg = data && data.choices && data.choices[0] && data.choices[0].message;
+  return parseReply(msg && msg.content);
+}

@@ -11,7 +11,7 @@
  *    through the AI proxy in rocky-worker/; otherwise (or on error) it falls back
  *    to simple phrase matching.
  *  - Keep playing with him: "AMAZE! AMAZE! AMAZE!".
- *  - Now and then: "Grace Rocky save stars." (the translator-screen line).
+ *  - Now and then: "Ram Rocky save stars." (the film's "Grace Rocky save stars.", with Ram as Rocky's Grace).
  *  - Ignored for 15 s: he settles down and sleeps. Click to wake him.
  */
 (function () {
@@ -23,13 +23,13 @@
   // Optional AI chat endpoint (the Cloudflare Worker in rocky-worker/), set via
   // `rocky_ai_url` in _config.yml. Empty = phrase matching only.
   var AI_URL = (document.currentScript && document.currentScript.getAttribute('data-ai-url')) || '';
-  var AI_TIMEOUT_MS = 12000;
+  var AI_TIMEOUT_MS = 15000;
 
   var SLEEP_AFTER_MS = 15000;
   var COMBO_WINDOW_MS = 3000;
   var COMBO_CLICKS = 5;
   var STARS_COOLDOWN_MS = 45000;
-  var STARS_LINE = 'Grace Rocky save stars.';
+  var STARS_LINE = 'Ram Rocky save stars.';
   var AMAZE_LINE = 'AMAZE! AMAZE! AMAZE!';
   var BUMP_LINE = 'Fist my bump!';
   var WALK_SPEED = 34; // px per second
@@ -586,7 +586,8 @@
 
   // Simple phrase matching, checked top to bottom; the first match wins.
   var RULES = [
-    // Any question (ends with "?" or uses a wh-/how word) beats every other rule.
+    // Sandy first (inside joke), then any question (ends with "?" or uses a wh-/how word).
+    { re: /\bsandy\b/, say: 'Rocky hate Sandy.' },
     { re: /\?\s*$|\b(what|why|when|where|who|whom|whose|which|how)\b/, say: 'Question is dumb.' },
     { re: /\b(website|web ?site|site|web ?page|home ?page|blog|layout|this page)\b/,
       say: 'Dirty, dirty, dirty. This room for garbage?' },
