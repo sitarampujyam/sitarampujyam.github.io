@@ -30,3 +30,7 @@ assets/js/dist
 *~
 .DS_Store
 Thumbs.db
+
+# Cloudflare Worker local state
+rocky-worker/.wrangler
+rocky-worker/node_modules

@@ -1,0 +1,11 @@
+name = "rocky-chat"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Sites allowed to call this Worker (comma-separated, exact origins).
+ALLOWED_ORIGINS = "https://sitarampujyam.github.io,http://localhost:4000,http://127.0.0.1:4000,http://localhost:4123"
+# GROQ_MODEL = "openai/gpt-oss-120b"
+
+# The Groq key is a secret, never in this file:
+#   npx wrangler secret put GROQ_API_KEY

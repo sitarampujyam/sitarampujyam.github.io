@@ -7,7 +7,9 @@
  *  - Only loaded on the home page.
  *  - First click: "Fist my bump!" with a fist bump. Later clicks: his thumbs up,
  *    which is a thumbs down (one claw pointing down, as in the film).
- *  - Hover: "Talk to Rocky" opens a small chat with simple phrase matching.
+ *  - Hover: "Talk to Rocky" opens a small chat. With `rocky_ai_url` set it talks
+ *    through the AI proxy in rocky-worker/; otherwise (or on error) it falls back
+ *    to simple phrase matching.
  *  - Keep playing with him: "AMAZE! AMAZE! AMAZE!".
  *  - Now and then: "Grace Rocky save stars." (the translator-screen line).
  *  - Ignored for 15 s: he settles down and sleeps. Click to wake him.
@@ -17,6 +19,11 @@
 
   if (window.__rockyLoaded) return;
   window.__rockyLoaded = true;
+
+  // Optional AI chat endpoint (the Cloudflare Worker in rocky-worker/), set via
+  // `rocky_ai_url` in _config.yml. Empty = phrase matching only.
+  var AI_URL = (document.currentScript && document.currentScript.getAttribute('data-ai-url')) || '';
+  var AI_TIMEOUT_MS = 12000;
 
   var SLEEP_AFTER_MS = 15000;
   var COMBO_WINDOW_MS = 3000;
@@ -227,7 +234,7 @@
   var css = [
     '#rocky{--rk-bubble-bg:#fffdf8;--rk-bubble-fg:#33261a;--rk-bubble-bd:rgba(51,38,26,.15);',
     '--rk-tag-bg:#33261a;--rk-tag-fg:#fff8ee;--rk-z:#8a7a66;--rk-x:0px;',
-    'position:fixed;right:72px;bottom:4px;width:112px;height:84px;z-index:1025;',
+    'position:fixed;right:72px;bottom:calc(4px + var(--rk-lift,0px));width:112px;height:84px;z-index:1025;',
     'transform:translateX(var(--rk-x));user-select:none;-webkit-user-select:none;',
     '-webkit-tap-highlight-color:transparent;pointer-events:none}',
     'html[data-bs-theme=dark] #rocky{--rk-bubble-bg:#2a2520;--rk-bubble-fg:#f3e9dc;',
@@ -251,7 +258,7 @@
     '#rocky.rocky--bubble .rk-talk,#rocky.rocky--chat .rk-talk{opacity:0!important;pointer-events:none!important}',
 
     /* chat box: a thought above Rocky, styled like the site\'s glass cards */
-    '#rocky .rk-chat{position:absolute;right:-28px;bottom:calc(100% + 36px);width:min(272px,calc(100vw - 32px));',
+    '#rocky .rk-chat{position:absolute;right:calc(-28px - var(--rk-shift,0px));bottom:calc(100% + 36px);width:min(272px,calc(100vw - 32px));',
     'box-sizing:border-box;padding:10px 10px 10px 12px;pointer-events:auto;',
     'background:var(--glass-surface,rgba(255,255,255,.85));border:1px solid var(--glass-edge,rgba(0,0,0,.1));',
     'border-radius:1.25rem;color:var(--text-color,#333);font-size:13.5px;line-height:1.4;',
@@ -269,6 +276,10 @@
     '#rocky .rk-me{margin-left:28px;text-align:right;color:var(--text-muted-color,#777)}',
     '#rocky .rk-rocky{margin-right:12px;font-weight:600}',
     '#rocky .rk-act{font-weight:500;font-style:italic;color:#3f9c86}',
+    '#rocky .rk-thinking i{display:inline-block;width:5px;height:5px;margin-right:4px;border-radius:50%;',
+    'background:currentColor;opacity:.35;animation:rk-think 1s ease-in-out infinite}',
+    '#rocky .rk-thinking i:nth-child(2){animation-delay:.15s}#rocky .rk-thinking i:nth-child(3){animation-delay:.3s}',
+    '@keyframes rk-think{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:.8;transform:translateY(-2px)}}',
     '#rocky .rk-form{display:flex;gap:6px;margin:0}',
     '#rocky .rk-input{flex:1;min-width:0;font:inherit;font-size:13px;color:inherit;padding:6px 12px;',
     'border:1px solid var(--glass-edge,rgba(0,0,0,.12));border-radius:999px;background:var(--glass-card,rgba(255,255,255,.5));',
@@ -413,6 +424,7 @@
   var chatForm = root.querySelector('.rk-form');
   var chatInput = root.querySelector('.rk-input');
   var closeBtn = root.querySelector('.rk-close');
+  var chatBox = root.querySelector('.rk-chat');
 
   /* ------------------------------------------------------------------ */
   /* Behaviour                                                           */
@@ -623,6 +635,7 @@
     hush();
     scheduleSleep();
     root.classList.add('rocky--chat');
+    fitChat();
     if (!chatLog.children.length) addMsg('rocky', 'Hello. Rocky listen.');
     setTimeout(function () { chatInput.focus(); }, 60);
   }
@@ -631,9 +644,40 @@
     if (!chatting) return;
     chatting = false;
     root.classList.remove('rocky--chat');
+    root.style.removeProperty('--rk-lift');
     if (document.activeElement && root.contains(document.activeElement)) document.activeElement.blur();
     scheduleSleep();
     scheduleWander(2500);
+  }
+
+  // Keep the chat box fully on screen: Rocky may have walked near an edge, and
+  // on phones the box is nearly as wide as the screen.
+  var EDGE = 12;
+  function fitChat() {
+    if (!chatting) return;
+    chatBox.style.setProperty('--rk-shift', '0px');
+    var r = root.getBoundingClientRect();
+    var vw = document.documentElement.clientWidth;
+    var right = r.right + 28; // the box's default right edge
+    var left = right - chatBox.offsetWidth;
+    var shift = 0;
+    if (left < EDGE) shift = EDGE - left; // slide right
+    else if (right > vw - EDGE) shift = vw - EDGE - right; // slide left
+    chatBox.style.setProperty('--rk-shift', shift + 'px'); // CSS: right = -28px - shift
+    liftAboveKeyboard();
+  }
+
+  // On phones the on-screen keyboard covers the bottom of the page; lift Rocky
+  // (and his chat box) above it while chatting.
+  function liftAboveKeyboard() {
+    var vv = window.visualViewport;
+    if (!vv || !chatting) return;
+    var covered = window.innerHeight - (vv.height + vv.offsetTop);
+    root.style.setProperty('--rk-lift', Math.max(0, Math.round(covered)) + 'px');
+  }
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', liftAboveKeyboard);
+    window.visualViewport.addEventListener('scroll', liftAboveKeyboard);
   }
 
   chatForm.addEventListener('submit', function (e) {
@@ -642,13 +686,66 @@
     if (!text) return;
     chatInput.value = '';
     addMsg('me', text);
-    var r = reply(text);
-    setTimeout(function () {
-      if (r.act) play(r.act, ACT_MS[r.act] || 1400);
-      if (r.say) addMsg('rocky', r.say);
-      if (r.action) addMsg('rocky', r.action, true);
-    }, 380);
+    history.push({ role: 'user', content: text });
+    if (AI_URL) askAI(); else setTimeout(function () { respondLocally(text); }, 380);
   });
+
+  // Phrase-matching reply (used offline or if the AI endpoint fails).
+  function respondLocally(text) {
+    var r = reply(text);
+    if (r.act) play(r.act, ACT_MS[r.act] || 1400);
+    if (r.say) addMsg('rocky', r.say);
+    if (r.action) addMsg('rocky', r.action, true);
+    history.push({ role: 'assistant', content: r.say || '(' + r.action + ')' });
+  }
+
+  var history = [];
+  var thinking = null;
+  var pending = 0;
+
+  function showThinking() {
+    if (thinking) return;
+    thinking = document.createElement('p');
+    thinking.className = 'rk-msg rk-rocky rk-thinking';
+    thinking.setAttribute('aria-label', 'Rocky is thinking');
+    thinking.innerHTML = '<i></i><i></i><i></i>';
+    chatLog.appendChild(thinking);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function hideThinking() {
+    if (thinking) { thinking.remove(); thinking = null; }
+  }
+
+  function askAI() {
+    var text = history[history.length - 1].content;
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, AI_TIMEOUT_MS);
+    pending++;
+    showThinking();
+    fetch(AI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: history.slice(-12) }),
+      signal: ctrl ? ctrl.signal : undefined
+    })
+      .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+      .then(function (data) {
+        if (!data || typeof data.reply !== 'string' || !data.reply) throw new Error('empty');
+        if (--pending === 0) hideThinking();
+        if (data.gesture && ACT_MS[data.gesture]) play(data.gesture, ACT_MS[data.gesture]);
+        addMsg('rocky', data.reply);
+        history.push({ role: 'assistant', content: data.reply });
+      })
+      .catch(function () {
+        if (--pending === 0) hideThinking();
+        respondLocally(text);
+      })
+      .then(function () {
+        clearTimeout(timer);
+        while (history.length > 24) history.shift();
+      });
+  }
 
   chatInput.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeChat();
@@ -668,6 +765,7 @@
       targetX = Math.max(targetX, x);
       root.style.setProperty('--rk-x', x + 'px');
     }
+    fitChat();
   });
 
   // Arrival: step in, wave, then go exploring.

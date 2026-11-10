@@ -90,6 +90,10 @@ pageviews:
 #
 theme_mode: # [light | dark]
 
+# Rocky's AI chat: URL of the Cloudflare Worker in rocky-worker/ (ending in /chat).
+# Leave empty to use simple phrase matching only.
+rocky_ai_url: "https://rocky-chat.sitarampujyam.workers.dev/chat"
+
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
@@ -222,6 +226,7 @@ compress_html:
     envs: [development]
 
 exclude:
+  - rocky-worker
   - "*.gem"
   - "*.gemspec"
   - docs
