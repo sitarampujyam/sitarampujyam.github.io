@@ -110,6 +110,19 @@
 
   <!-- Scripts -->
 
+  <!-- Default to light mode on a visitor's first visit (instead of following the system).
+       Runs once, so a later choice of system, light or dark is kept. -->
+  <script>
+    (function () {
+      try {
+        if (!localStorage.getItem('theme-default-set')) {
+          localStorage.setItem('theme-default-set', '1');
+          if (!localStorage.getItem('theme')) localStorage.setItem('theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
 
   {% include js-selector.html lang=lang %}
