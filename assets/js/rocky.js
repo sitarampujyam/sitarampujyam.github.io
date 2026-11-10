@@ -574,6 +574,8 @@
 
   // Simple phrase matching, checked top to bottom; the first match wins.
   var RULES = [
+    // Any question (ends with "?" or uses a wh-/how word) beats every other rule.
+    { re: /\?\s*$|\b(what|why|when|where|who|whom|whose|which|how)\b/, say: 'Question is dumb.' },
     { re: /\b(website|web ?site|site|web ?page|home ?page|blog|layout|this page)\b/,
       say: 'Dirty, dirty, dirty. This room for garbage?' },
     { re: /\b(hi+|hello+|hey+|heya|hiya|yo|sup|howdy|hola|namaste|greetings|good (morning|afternoon|evening))\b/,
@@ -584,8 +586,6 @@
     { re: /\b(stars?|sun|astrophage|hail mary|mission|save (the )?(world|earth|planet))\b/, say: STARS_LINE },
     { re: /\b(alone|lonely|by myself|no ?one|nobody)\b/, say: 'Only us.' },
     { re: /\b(lol|lmao|rofl|ha(ha)+|he(he)+|joke|joking|kidding|jk|funny)\b/, say: 'Oh, humor. Confusing.' },
-    { re: /\bare (you|u) (a |an )?(rock|stone|spider|crab|bug|insect|robot|alien|real|ai|bot|puppet)\b/,
-      say: 'Question is dumb.' },
     { re: /\b(wow+|whoa+|amazing|incredible|unbelievable|science|physics|experiment|discovery)\b/,
       say: AMAZE_LINE, act: 'amaze' },
     { re: /\b(good|great|nice|cool|awesome|cute|adorable|love|like you|beautiful|handsome|smart|clever|best|brilliant|genius|well done|thanks?|thx|ty|sweet|lovely|you look|you are|you're)\b/,
