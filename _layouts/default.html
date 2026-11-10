@@ -94,5 +94,10 @@ layout: compress
 
     <!-- Theme & Reader Customizer Script -->
     <script src="{{ '/assets/js/theme-reader-enhancements.js' | relative_url }}?v=1.3" defer></script>
+
+    {% if page.layout == 'home' %}
+      <!-- Rocky, the Eridian companion (home page only) -->
+      <script src="{{ '/assets/js/rocky.js' | relative_url }}?v=4" defer></script>
+    {% endif %}
   </body>
 </html>
