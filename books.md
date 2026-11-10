@@ -61,6 +61,15 @@ permalink: /books/
     </div>
   </article>
 
+  <article class="book-card">
+    <img class="book-cover" src="{{ b | append: 'phm.jpg' | relative_url }}" alt="Cover of Project Hail Mary" loading="lazy">
+    <div class="book-info">
+      <h2 class="book-title" data-toc-skip>Project Hail Mary</h2>
+      <p class="book-author">Andy Weir</p>
+      <p class="book-note">The most fun and calculation-filled sci-fi I’ve ever read.</p>
+    </div>
+  </article>
+
   <article class="book-card book-series">
     <div class="book-info">
       <h2 class="book-title" data-toc-skip>The Foundation Series</h2>
