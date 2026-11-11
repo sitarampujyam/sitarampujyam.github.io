@@ -1,0 +1,57 @@
+---
+layout: page
+# The constellation: every post is a small star, every tag a bright one.
+---
+
+{% assign tag_names = '' | split: '' %}
+{% for t in site.tags %}
+  {% assign tag_names = tag_names | push: t[0] %}
+{% endfor %}
+{% assign sorted_tags = tag_names | sort_natural %}
+
+<p class="constellation-intro">
+  Each tag is a bright star and each post a small one. A post sits beside the
+  tags it carries, so posts that share a tag gather into a constellation.
+</p>
+
+  <section
+    id="constellation"
+    class="constellation"
+    aria-label="Constellation of posts and tags"
+  >
+    <canvas
+      role="img"
+      aria-label="A map of {{ site.posts.size }} post{% if site.posts.size != 1 %}s{% endif %} connected to {{ sorted_tags.size }} tag{% if sorted_tags.size != 1 %}s{% endif %}. The same tags are listed below."
+    ></canvas>
+    <div class="constellation-bar">
+      <div class="constellation-caption" aria-live="polite"></div>
+      <div class="constellation-legend" aria-hidden="true">
+        <span><i class="cl-dot cl-post"></i>Post</span>
+        <span><i class="cl-dot cl-tag"></i>Tag</span>
+      </div>
+    </div>
+  </section>
+
+  <noscript><style>.constellation { display: none; }</style></noscript>
+
+  <script type="application/json" id="constellation-data">
+    {"tags":[{% for t in sorted_tags %}{"n":{{ t | jsonify }},"c":{{ site.tags[t].size }},"u":{{ t | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}],"posts":[{% for post in site.posts %}{"t":{{ post.title | jsonify }},"u":{{ post.url | relative_url | jsonify }},"d":{{ post.date | date: '%-d %b %Y' | jsonify }},"g":{{ post.tags | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]}
+  </script>
+  <script src="{{ '/assets/js/constellation.js' | relative_url }}?v=3" defer></script>
+
+  {% if sorted_tags.size > 0 %}
+  <!-- open until the map script loads and folds it away (no JS = plain list) -->
+  <details class="constellation-list" open>
+    <summary>See all tags as a list</summary>
+    <div id="tags" class="d-flex flex-wrap mx-xl-2">
+      {% for t in sorted_tags %}
+        <div>
+          <a class="tag" href="{{ t | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}">
+            {{ t -}}
+            <span class="text-muted">{{ site.tags[t].size }}</span>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </details>
+  {% endif %}
